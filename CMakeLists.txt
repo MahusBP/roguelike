@@ -3,7 +3,7 @@ project(roguelike)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES src/main.cpp src/header/IScene.h src/source/Button.cpp src/header/Button.h src/source/scene/MainMenu.cpp src/header/scene/MainMenu.h src/source/Settings.cpp src/header/Settings.h)
+set(SOURCE_FILES src/main.cpp src/Game/header/IScene.h src/Game/source/Button.cpp src/Game/header/Button.h src/Game/source/scene/MainMenu.cpp src/Game/header/scene/MainMenu.h src/Game/source/Settings.cpp src/Game/header/Settings.h src/MhsFloat.h src/Game/source/System.cpp src/Game/header/System.h src/Game/EventManager.cpp src/Game/EventManager.h src/Game/header/IEventListener.h)
 add_executable(roguelike ${SOURCE_FILES})
 
 # SFML

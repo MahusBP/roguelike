@@ -8,7 +8,7 @@
 namespace Game {
     class IScene {
     public:
-        virtual void setEvent() = 0;
+        virtual void setEvent(sf::Event event) = 0;
         virtual void update(float delta) = 0;
         virtual void draw() = 0;
     };
