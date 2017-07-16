@@ -5,6 +5,8 @@
 #ifndef ROGUELIKE_ISCENE_H
 #define ROGUELIKE_ISCENE_H
 
+#include "SFML/Graphics.hpp"
+
 namespace Game {
     class IScene {
     public:

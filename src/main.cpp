@@ -2,21 +2,24 @@
 #include "SFML/Graphics.hpp"
 #include "Game/header/System.h"
 #include "Game/header/scene/MainMenu.h"
+#include "Game/GameScene.h"
 
 
 int main() {
     sf::RenderWindow *window = new sf::RenderWindow(sf::VideoMode(1024, 600), "q");
-    Game::MainMenu *menu = new Game::MainMenu(window);
     Game::System::init();
     Game::System::setWindow(window);
+    Game::MainMenu *menu = new Game::MainMenu(window);
+    Game::GameScene * gs = new Game::GameScene(window);
     sf::Event event;
     while (window->isOpen()) {
         while (window->pollEvent(event)) {
-            menu->setEvent(event);
+            gs->setEvent(event);
         }
-        menu->update(Game::System::delta);
+        gs->update(Game::System::delta);
         window->clear();
-        menu->draw();
+
+        gs->draw();
         window->display();
     }
     return 0;
