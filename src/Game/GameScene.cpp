@@ -4,14 +4,19 @@
 
 #include "GameScene.h"
 
+
 Game::GameScene::GameScene(sf::RenderWindow *windowRef) {
     window = windowRef;
     setButtons();
+    setLevel();
 }
 
 Game::GameScene::~GameScene() {
     for (size_t i = 0; i < buttons.size(); ++i) {
         delete buttons[i];
+    }
+    for (size_t i = 0; i < objects.size(); ++i) {
+        delete objects[i];
     }
 }
 
@@ -28,6 +33,9 @@ void Game::GameScene::draw() {
     for (size_t i = 0; i < buttons.size(); ++i) {
         buttons[i]->draw(window);
     }
+    for (size_t i = 0; i < objects.size(); ++i) {
+        objects[i]->draw(window);
+    }
 }
 
 void Game::GameScene::update(float delta) {
@@ -43,5 +51,25 @@ void Game::GameScene::setEvent(sf::Event event) {
             break;
         default:
             break;
+    }
+}
+
+void Game::GameScene::setLevel() {
+    std::ifstream file_in("res/lvl/level1.mhs");
+    int rows = 0;
+    std::string line;
+    while (std::getline(file_in, line)) {
+        for (int columns = 0; columns < line.size(); ++columns) {
+            objects.push_back(new LevelObject());
+            if (line[columns] == '_') {
+                objects.back()->setTexture("res/img/grass_1.png");
+                objects.back()->setObjectType(ObjectType::PASSABLE);
+            } else if (line[columns] == '#') {
+                objects.back()->setTexture("res/img/wall_0.png");
+                objects.back()->setObjectType(ObjectType::IMPASSABLE);
+            }
+            objects.back()->setPosition(32 * columns, 32 * rows);
+        }
+        rows++;
     }
 }

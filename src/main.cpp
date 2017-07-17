@@ -11,6 +11,7 @@ int main() {
     Game::System::setWindow(window);
     Game::MainMenu *menu = new Game::MainMenu(window);
     Game::GameScene * gs = new Game::GameScene(window);
+    window->setView(sf::View(sf::FloatRect(-(1024/3), -(600/3), 1024, 600)));
     sf::Event event;
     while (window->isOpen()) {
         while (window->pollEvent(event)) {
