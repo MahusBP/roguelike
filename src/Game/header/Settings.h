@@ -17,19 +17,17 @@ namespace Game {
         static bool setFont(std::string path);
         //static void setState(GameState _state);
         //static GameState getState();
+        static unsigned getTileSize();
         static std::map<std::string, sf::Font>* fonts;
         static std::string title;
         static sf::Font * font;
         static sf::Mouse * mouse;
         static uint upd_ratio;
-        static uint width;
-        static uint height;
-        static float delta;
-        static float gravity;
 
     private:
         static void setFonts();
         //static GameState * state;
+        static unsigned tileSize;
     };
 
 }

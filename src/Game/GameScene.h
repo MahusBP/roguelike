@@ -8,6 +8,7 @@
 #include <fstream>
 #include "LevelObject.h"
 #include "ObjectType.h"
+#include "Player.h"
 #include "header/IScene.h"
 #include "header/Button.h"
 #include "header/System.h"
@@ -17,13 +18,14 @@ namespace Game {
     public:
         GameScene(sf::RenderWindow* windowRef);
         ~GameScene();
-        void setEvent(sf::Event event) override;
-        void update(float delta) override;
-        void draw() override;
+        virtual void setEvent(sf::Event event) override;
+        virtual void update(float delta) override;
+        virtual void draw() override;
     private:
         std::vector<LevelObject*> objects;
         std::vector<Button*> buttons;
         sf::RenderWindow *window;
+        Player * player;
         void setButtons();
         void setLevel();
     };

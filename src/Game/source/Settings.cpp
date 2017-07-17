@@ -4,16 +4,13 @@
 
 #include "../header/Settings.h"
 
-std::map<std::string, sf::Font>* Game::Settings::fonts = nullptr;
+std::map<std::string, sf::Font>* Game::Settings::fonts  = nullptr;
 //Game::GameState*    Game::Settings::state   = nullptr;
-sf::Font*           Game::Settings::font    = nullptr;
-sf::Mouse*          Game::Settings::mouse   = nullptr;
-std::string         Game::Settings::title   = "";
-uint                Game::Settings::width   = 1024;
-uint                Game::Settings::height  = 600;
-uint                Game::Settings::upd_ratio = 125;
-float               Game::Settings::delta   = 0.017f;
-float               Game::Settings::gravity = 150.f;
+sf::Font*           Game::Settings::font                = nullptr;
+sf::Mouse*          Game::Settings::mouse               = nullptr;
+std::string         Game::Settings::title               = "";
+uint                Game::Settings::upd_ratio           = 125;
+unsigned            Game::Settings::tileSize            = 32;
 
 void Game::Settings::init() {
     font = new sf::Font();
@@ -49,6 +46,10 @@ void Game::Settings::close() {
 
 bool Game::Settings::setFont(std::string path) {
     return Settings::font->loadFromFile(path);
+}
+
+unsigned Game::Settings::getTileSize() {
+    return tileSize;
 }
 //
 //void Game::Settings::setState(Game::GameState _state) {

@@ -36,6 +36,7 @@ void Game::GameScene::draw() {
     for (size_t i = 0; i < objects.size(); ++i) {
         objects[i]->draw(window);
     }
+    player->draw(window);
 }
 
 void Game::GameScene::update(float delta) {
@@ -55,20 +56,27 @@ void Game::GameScene::setEvent(sf::Event event) {
 }
 
 void Game::GameScene::setLevel() {
+    player = new Player();
+    player->setTexture("res/img/character_0.png");
+
     std::ifstream file_in("res/lvl/level1.mhs");
     int rows = 0;
     std::string line;
     while (std::getline(file_in, line)) {
         for (int columns = 0; columns < line.size(); ++columns) {
             objects.push_back(new LevelObject());
-            if (line[columns] == '_') {
+            if (line[columns] == '_' || line[columns] == 'P') {
                 objects.back()->setTexture("res/img/grass_1.png");
                 objects.back()->setObjectType(ObjectType::PASSABLE);
             } else if (line[columns] == '#') {
                 objects.back()->setTexture("res/img/wall_0.png");
                 objects.back()->setObjectType(ObjectType::IMPASSABLE);
             }
-            objects.back()->setPosition(32 * columns, 32 * rows);
+            objects.back()->setPosition(Settings::getTileSize() * columns, Settings::getTileSize() * rows);
+
+            if (line[columns] == 'P') {
+                player->setPosition(Settings::getTileSize() * columns, Settings::getTileSize() * rows);
+            }
         }
         rows++;
     }

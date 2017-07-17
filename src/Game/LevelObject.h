@@ -7,6 +7,8 @@
 
 #include <SFML/Graphics.hpp>
 #include "ObjectType.h"
+#include "header/System.h"
+#include "header/Settings.h"
 
 namespace Game {
     class LevelObject {

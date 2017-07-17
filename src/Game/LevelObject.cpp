@@ -40,7 +40,8 @@ void Game::LevelObject::draw(sf::RenderWindow *window) {
 void Game::LevelObject::setTexture(std::string path) {
     texture->loadFromFile(path);
     sprite->setTexture(*texture);
-    setScale(32/sprite->getLocalBounds().width, 32/sprite->getLocalBounds().height);
+    setScale(Settings::getTileSize()/sprite->getLocalBounds().width,
+             Settings::getTileSize()/sprite->getLocalBounds().height);
 }
 
 //void Game::LevelObject::setTexture(sf::Texture *_texure) {

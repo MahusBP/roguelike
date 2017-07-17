@@ -1,0 +1,5 @@
+What char means
+    '#' - Wall.     Impassable object.
+    '_' - Ground.   Passable object.
+    'P' - Player.   Your character.
+    'e' - Enemy.    Your foe.

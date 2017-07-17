@@ -7,6 +7,7 @@
 
 int main() {
     sf::RenderWindow *window = new sf::RenderWindow(sf::VideoMode(1024, 600), "q");
+    window->setFramerateLimit(60);
     Game::System::init();
     Game::System::setWindow(window);
     Game::MainMenu *menu = new Game::MainMenu(window);

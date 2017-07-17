@@ -11,7 +11,8 @@ Game::MainMenu::MainMenu(sf::RenderWindow* windowRef) {
     bg_texture = new sf::Texture();
     bg_texture->loadFromFile("res/img/bg_0.png");
     bg->setTexture(*bg_texture);
-    bg->setScale(Settings::width/bg->getGlobalBounds().width, Settings::height/bg->getGlobalBounds().height);
+    bg->setScale(System::getWindowSize().x/bg->getGlobalBounds().width,
+                 System::getWindowSize().y/bg->getGlobalBounds().height);
 
     setButtons();
 }
@@ -92,8 +93,9 @@ void Game::MainMenu::setButtons() {
         buttons.push_back(new Button());
         buttons[i]->setTexture(texture);
         buttons[i]->setScale(0.3, 0.2);
-        buttons[i]->setPosition(Settings::width/2,
-                                Settings::height/2 - buttons[i]->getBounds().height + buttons[i]->getBounds().height * i);
+        buttons[i]->setPosition(System::getWindowSize().x/2,
+                                System::getWindowSize().y/2 - buttons[i]->getBounds().height +
+                                        buttons[i]->getBounds().height * i);
     }
     font->loadFromFile("res/font/timeburnerbold.ttf");
     buttons[0]->setText(new sf::Text("New Game", *font, 26), sf::Color::White);
